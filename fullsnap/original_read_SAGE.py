@@ -117,36 +117,6 @@ def galdtype_multidark():
 
 
 
-def sagengals(fname):
-    # Read a single SAGE output file, returning all the galaxy data in a record array
-    # fname is the full name for the file to read, including its path
-    # fields is the list of fields you want to read in.  If empty, will read all fields.
-
-    fin      = open(fname, 'rb')                          # Open the file
-    Ntrees   = np.fromfile(fin, np.dtype(np.int32),1)     # Read number of trees in file
-    NtotGals = np.fromfile(fin, np.dtype(np.int32),1)[0]  # Read number of gals in file.
-    
-    if NtotGals == 0:
-        print('no galaxies in file: ',fname)
-    
-    if (Ntrees != 0): # Read the number of gals in each tree
-        GalsPerTree = np.fromfile(fin, np.dtype((np.int32, Ntrees)),1)     
-    return NtotGals
-
-
-def sageout1(fname, field):
-    # Read a single SAGE output file, returning all the galaxy data in a record array
-    # fname is the full name for the file to read, including its path
-    # fields is the list of fields you want to read in.  If empty, will read all fields.
-    Galdesc = galdtype_multidark()
-
-    ngals = sagengals(fname)
-    fin  = open(fname, 'rb')                 # Open the file
-    Gall = np.fromfile(fin, Galdesc, ngals)  # Read all the galaxy data
-    G    = Gall[field]                       # Reduce to fields of interest
-    return G 
-
-
 def sageoutsingle(fname, fields=[]):
     # Read a single SAGE output file, returning all the galaxy data in a record array
     # fname is the full name for the file to read, including its path
@@ -155,17 +125,17 @@ def sageoutsingle(fname, fields=[]):
     if len(fields)==0:
         fields=list(Galdesc.names)
 
-    fin      = open(fname, 'rb')                          # Open the file
-    Ntrees   = np.fromfile(fin, np.dtype(np.int32),1)     # Read number of trees in file
-    NtotGals = np.fromfile(fin, np.dtype(np.int32),1)[0]  # Read number of gals in file.
+    fin      = open(fname, 'rb')                                           # Open the file
+    Ntrees   = np.fromfile(fin, np.dtype(np.int32),1)                      # Read number of trees in file
+    NtotGals = np.fromfile(fin, np.dtype(np.int32),1)[0]                   # Read number of gals in file.
     
     if NtotGals == 0:
         print('no galaxies in file: ',fname)
     
-    if (Ntrees != 0): # Read the number of gals in each tree
-        GalsPerTree = np.fromfile(fin, np.dtype((np.int32, Ntrees)),1)     
-    G = np.fromfile(fin, Galdesc, NtotGals)   # Read all the galaxy data
-    G = G[fields]                             # Reduce to fields of interest
+    if (Ntrees != 0):
+        GalsPerTree = np.fromfile(fin, np.dtype((np.int32, Ntrees)),1)     # Read the number of gals in each tree
+    G = np.fromfile(fin, Galdesc, NtotGals)                                # Read all the galaxy data       
+    G = G[fields]                                                          # Reduce to fields of interest
     return G 
 
 

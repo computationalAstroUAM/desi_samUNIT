@@ -5,7 +5,9 @@ Maybe:
 [] hdf5 file with further properties
 [] HODs of the samples
 
-In this folder there are codes to generate a [DESI-like catalogues](https://desi.lbl.gov/trac/wiki/Clustering/MockChallenge/make_galaxy) from the SAGE+UNIT catalogue. Programs and subfolders here:
+In this folder there are codes to generate a [DESI-like catalogues](https://desi.lbl.gov/trac/wiki/Clustering/MockChallenge/make_galaxy) from the SAGE+UNIT catalogue.
+
+## Programs
 
 **lo2f.py** To plot the model [OII] luminosity function at z~1, compared with observations.
 
@@ -26,6 +28,10 @@ In this folder there are codes to generate a [DESI-like catalogues](https://desi
 **bias_r_pk.py** Obtain the bias in real space for the different selections.
 
 **bias_z_pk.py** Obtain the bias in z-space for the different selections. WORK IN PROGRESS
+
+## Subfolders
+
+**fullsnap** Produce a file to be shared, from a full snapshot of SAGE
 
 ## Specifications for DESI samples
 
