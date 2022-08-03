@@ -22,13 +22,16 @@ if Testing: sims = [sims[0]]
 # Fields to read
 # Type : Galaxy type (0=central, 1=satellite)
 # CtreesCentralID : Central (main) halo index from consistent-trees output.
-# CentralMvir : M200c of this galaxy's central halo [10^10 Msun / h]
+#                   This is equivalent to the MainHaloID in the ELG only SAGE h5 files.
+# CentralMvir : M200c of this galaxy's main host halo [10^10 Msun/h].
+#               This is equivalent to the Mvir in the ELG only SAGE h5 files.
+# ELG only SAGE h5 files.
 # Pos : (xgal,ygal,zgal) coordinates of galaxy [cMpc/h]
 # Vel : (vxgal,vygal,vzgal) velocity of galaxy [km/s]
-# StellarMass : Total stellar mass of the galaxy [10^10 Msun / h]
+# StellarMass : Total stellar mass of the galaxy [10^10 Msun/h]
 # SfrDisk : Star formation rate of the disk (averaged over the last time-step) [Msun/yr]
 # SfrBulge : Star formation rate of the bulge (averaged over the last time-step) [Msun/yr]
-# BlackHoleMass : Mass of supermassive black hole [10^10 Msun / h] 
+# BlackHoleMass : Mass of supermassive black hole [10^10 Msun/h]
 fields=['Type','CtreesCentralID','CentralMvir','Pos','Vel',
         'StellarMass','SfrDisk','SfrBulge','BlackHoleMass']
 labels =[' Galaxy type (0=central, 1=satellite)',
