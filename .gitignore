@@ -6,6 +6,8 @@
 *.aux
 *.out
 */out
+out
+data/*
 
 __pycache__/
 

@@ -1,3 +1,5 @@
+# In taurus: need to run python3 within bash
+
 import glob
 import h5py
 import numpy as np
@@ -11,10 +13,11 @@ rootdir = '/data2/users/astevens/SAGE_output/'
 
 zz = 0.987
 
-sims = ['UNITSIM1', 'UNITSIM1_InvPhase','UNITSIM2','UNITSIM2_InvPhase']
-if Testing: sims = [sims[0]]
+sims = ['UNITSIM1']#, 'UNITSIM1_InvPhase','UNITSIM2','UNITSIM2_InvPhase']
 lboxes = [1000.]*len(sims) # Mpc/h
 h0 = 0.6774
+
+if Testing: sims = [sims[0]]
 
 # Fields to read
 # Type : Galaxy type (0=central, 1=satellite)
@@ -22,12 +25,21 @@ h0 = 0.6774
 # CentralMvir : M200c of this galaxy's central halo [10^10 Msun / h]
 # Pos : (xgal,ygal,zgal) coordinates of galaxy [cMpc/h]
 # Vel : (vxgal,vygal,vzgal) velocity of galaxy [km/s]
-fields=['Type','CtreesCentralID','CentralMvir','Pos','Vel']
-labels =['Galaxy type (0=central, 1=satellite)',
-         'Central (main) halo index from ConsistentTrees output.',
-         'M200c of this galaxys central halo [10^10 Msun / h]',
-         ' coordinates of galaxy [cMpc/h]',
-         ' velocity of galaxy [km/s]']
+# StellarMass : Total stellar mass of the galaxy [10^10 Msun / h]
+# SfrDisk : Star formation rate of the disk (averaged over the last time-step) [Msun/yr]
+# SfrBulge : Star formation rate of the bulge (averaged over the last time-step) [Msun/yr]
+# BlackHoleMass : Mass of supermassive black hole [10^10 Msun / h] 
+fields=['Type','CtreesCentralID','CentralMvir','Pos','Vel',
+        'StellarMass','SfrDisk','SfrBulge','BlackHoleMass']
+labels =[' Galaxy type (0=central, 1=satellite)',
+         ' Central (main) halo index from ConsistentTrees output.',
+         ' M200c of this galaxys central halo [10^10 Msun/h]',
+         ' Coordinates of galaxy [cMpc/h]',
+         ' Velocity of galaxy [km/s]',
+         ' Total stellar mass of the galaxy [10^10 Msun/h]',
+         ' Disk star formation rate (averaged over the last time-step) [Msun/yr]',
+         ' Bulge star formation rate (averaged over the last time-step) [Msun/yr]',         
+         ' Mass of supermassive black hole [10^10 Msun/h] ']
 
 for isim,sim in enumerate(sims):
     rootf = rootdir+sim+'/model_z'+str(zz)+'_'

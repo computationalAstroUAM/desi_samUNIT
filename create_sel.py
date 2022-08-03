@@ -16,7 +16,7 @@ lboxes = [1000.]*len(sims) # Mpc/h
 h0 = 0.6774
 
 ############################################
-unitdir = '/data6/users/aknebe/Projects/UNITSIM/ELGs_DESI/'
+unitdir = '/data8/aknebe/UNITSIM/ELGs_DESI/'
 outdir = '/home2/vgonzalez/out/desi_samUNIT/'
 ############################################
 
