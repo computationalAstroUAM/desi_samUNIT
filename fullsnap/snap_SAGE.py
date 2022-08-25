@@ -24,7 +24,6 @@ if Testing: sims = [sims[0]]
 # CtreesCentralID : Central (main) halo index from consistent-trees output.
 #                   This is equivalent to the MainHaloID in the ELG only SAGE h5 files.
 # CentralMvir : M200c of this galaxy's main host halo [10^10 Msun/h].
-#               This is equivalent to the Mvir in the ELG only SAGE h5 files.
 # ELG only SAGE h5 files.
 # Pos : (xgal,ygal,zgal) coordinates of galaxy [cMpc/h]
 # Vel : (vxgal,vygal,vzgal) velocity of galaxy [km/s]
