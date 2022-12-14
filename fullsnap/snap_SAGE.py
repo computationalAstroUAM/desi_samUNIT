@@ -11,7 +11,8 @@ outdir = '/home2/vgonzalez/outputs/desi_samUNIT/'
 
 rootdir = '/data2/users/astevens/SAGE_output/'
 
-zz = 0.987
+##zz = 0.987
+zz = 1.372
 
 sims = ['UNITSIM1']#, 'UNITSIM1_InvPhase','UNITSIM2','UNITSIM2_InvPhase']
 lboxes = [1000.]*len(sims) # Mpc/h
@@ -30,8 +31,12 @@ if Testing: sims = [sims[0]]
 # SfrDisk : Star formation rate of the disk (averaged over the last time-step) [Msun/yr]
 # SfrBulge : Star formation rate of the bulge (averaged over the last time-step) [Msun/yr]
 # BlackHoleMass : Mass of supermassive black hole [10^10 Msun/h]
+# ColdGas : Cold (disc) gas mass of the galaxy [10^10 Msun / h]
+# BulgeMass : Stellar mass of the bulge [10^10 Msun / h]
+# DiskRadius: Exponential disk scale radius [pMpc/h]
 fields=['Type','CtreesCentralID','CentralMvir','Pos','Vel',
-        'StellarMass','SfrDisk','SfrBulge','BlackHoleMass']
+        'StellarMass','SfrDisk','SfrBulge','BlackHoleMass',
+        'ColdGas','BulgeMass','DiskRadius']
 labels =[' Galaxy type (0=central, 1=satellite)',
          ' Central (main) halo index from ConsistentTrees output.',
          ' M200c of this galaxys central halo [10^10 Msun/h]',
@@ -40,7 +45,10 @@ labels =[' Galaxy type (0=central, 1=satellite)',
          ' Total stellar mass of the galaxy [10^10 Msun/h]',
          ' Disk star formation rate (averaged over the last time-step) [Msun/yr]',
          ' Bulge star formation rate (averaged over the last time-step) [Msun/yr]',         
-         ' Mass of supermassive black hole [10^10 Msun/h] ']
+         ' Mass of supermassive black hole [10^10 Msun/h] ',
+         ' Cold (disc) gas mass of the galaxy [10^10 Msun / h]',
+         ' Stellar mass of the bulge [10^10 Msun / h]',
+         ' Exponential disk scale radius in physical units [pMpc/h]']
 
 for isim,sim in enumerate(sims):
     rootf = rootdir+sim+'/model_z'+str(zz)+'_'
